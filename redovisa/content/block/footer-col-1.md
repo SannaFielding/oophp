@@ -1,3 +1,3 @@
-#### Footer col 1
+#### Om webbplatsen
 
-Med brödtext i ett stycke som säger något trevligt om just detta block, eller kanske en lista av länkar.
+Denna sidan är skapad som en redovisnings- och testsida för kursen oophp VT-20.

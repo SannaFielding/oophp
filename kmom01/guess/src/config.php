@@ -23,3 +23,6 @@ set_exception_handler(function ($e) {
         . $e->getTraceAsString()
         . "</pre>";
 });
+
+session_name("sahx11");
+session_start();

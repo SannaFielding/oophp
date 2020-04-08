@@ -10,6 +10,7 @@ class Guess
      */
     public $number;
     public $tries;
+    public $won;
 
 
 
@@ -30,6 +31,7 @@ class Guess
             $this->setNumber($number);
         }
         $this->setTries($tries);
+        $this->won = false;
     }
 
 
@@ -116,27 +118,31 @@ class Guess
      */
     public function makeGuess($guess)
     {
-        if ($guess === "") {
-            throw new GuessException("NOT ELIGIBLE, SHOULD BE AN INTEGER BETWEEN 1 AND 100.");
-        }
-
-        if ($this->tries === 0) {
-            throw new GuessException("NOT ELIGIBLE, YOU'RE OUT OF TRIES.");
-        }
-
-        if ($guess < 1 || $guess > 100) {
-            throw new GuessException("OUT OF BOUNDS.");
-        }
-
-        $this->decTries();
-        $corrNr = $this->number;
-
-        if ($corrNr === $guess) {
+        if ($this->won === true) {
             return $this->output("corr");
-        } elseif ($guess > $corrNr) {
-            return $this->output("high");
         } else {
-            return $this->output("low");
+            if ($this->tries === 0) {
+                throw new GuessException("NOT ELIGIBLE, YOU'RE OUT OF TRIES.");
+            }
+
+            if ($guess === "") {
+                throw new GuessException("NOT ELIGIBLE, SHOULD BE AN INTEGER BETWEEN 1 AND 100.");
+            }
+
+            if ($guess < 1 || $guess > 100) {
+                throw new GuessException("OUT OF BOUNDS.");
+            }
+
+            $this->decTries();
+            $corrNr = $this->number;
+
+            if ($corrNr == $guess) {
+                return $this->output("corr");
+            } elseif ($guess > $corrNr) {
+                return $this->output("high");
+            } else {
+                return $this->output("low");
+            }
         }
     }
 
@@ -158,7 +164,8 @@ class Guess
                 return "TOO LOW.";
                 break;
             case 'corr':
-                return "CORRECT!";
+                $this->won = true;
+                return "CORRECT! PRESS 'START OVER' TO PLAY AGAIN.";
                 break;
         }
     }
