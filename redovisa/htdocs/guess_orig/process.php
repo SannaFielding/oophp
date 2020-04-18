@@ -7,7 +7,7 @@ include(__DIR__ . "/config.php");
  * A processing page that does a redirect.
  */
 
-$_SESSION["guess"] = $_POST["guess"];
+ $_SESSION["guess"] = $_POST["guess"];
 
 if ($_POST["doInit"] === "Start over") {
     $_SESSION["event"] = "doInit";
@@ -18,5 +18,5 @@ if ($_POST["doInit"] === "Start over") {
 }
 
 // Redirect to a result page.
-$url = "../index.php";
+$url = "index.php";
 header("Location: $url");

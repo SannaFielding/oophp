@@ -1,15 +1,30 @@
 <?php
+namespace Mos\Person;
+
 /**
  * Showing off a standard class with methods and properties.
  */
-class Person2
+class Person
 {
     /**
      * @var string  $name   The name of the person.
      * @var integer $age    The age of the person.
      */
-    private $name;
-    private $age;
+    public $name;
+    public $age;
+
+
+    /**
+     * Constructor to create a Person.
+     *
+     * @param null|string $name The name of the person.
+     * @param null|int    $age  The age of the person.
+     */
+    public function __construct(string $name = null, int $age = null)
+    {
+        $this->name = $name;
+        $this->age = $age;
+    }
 
 
     /**

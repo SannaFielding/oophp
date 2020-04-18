@@ -28,7 +28,8 @@ class Person4
      *
      * @return string with details on person.
      */
-    public function details() {
+    public function details()
+    {
         return "My name is {$this->name} and I am {$this->age} years old.";
     }
 

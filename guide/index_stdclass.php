@@ -1,7 +1,7 @@
 <?php
 $object = new stdClass();
 $object->age = 42;
-$object->details = function() {
+$object->details = function () {
     echo "Hi, I'm an object!";
 };
 
